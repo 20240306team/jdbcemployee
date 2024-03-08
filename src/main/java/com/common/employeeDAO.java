@@ -126,6 +126,43 @@ public class employeeDAO {
 
         return result;
     }
+
+    public int empAdd(Connection con, employeeDTO newEmp) {
+
+        PreparedStatement pstmt = null;
+
+        int result = 0;
+
+        String query = prop.getProperty("insertMember");
+
+        try {
+            pstmt = con.prepareStatement(query);
+
+            pstmt.setString(1,newEmp.getEmpID());
+            pstmt.setString(2,newEmp.getEmpName());
+            pstmt.setString(3,newEmp.getEmpNo());
+            pstmt.setString(4,newEmp.getEmail());
+            pstmt.setString(5,newEmp.getPhone());
+            pstmt.setString(6,newEmp.getDeptCode());
+            pstmt.setString(7,newEmp.getJobCode());
+            pstmt.setString(8,newEmp.getSalLevel());
+            pstmt.setInt(9,newEmp.getSalary());
+            pstmt.setDouble(10,newEmp.getBonus());
+            pstmt.setString(11,newEmp.getManagerId());
+            pstmt.setDate(12,newEmp.getHireDate());
+            pstmt.setDate(13,newEmp.getEntDate());
+            pstmt.setString(14,newEmp.getEntYn());
+
+            result=pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            close(pstmt);
+        }
+        return result;
+
+    }
 }
 
 
