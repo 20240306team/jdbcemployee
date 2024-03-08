@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone ="no" ?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
+
     <entry key="select">
 
         select
@@ -14,6 +15,13 @@
         department b on a.dept_code = b.dept_id
         group by a.dept_code;
 
+    </entry>
+
+    <entry key="getEverything">
+        select
+            *
+        from
+            employee
     </entry>
 
 </properties>
