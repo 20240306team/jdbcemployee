@@ -15,7 +15,7 @@ import static com.common.JDBCTemplate.close;
 
 public class employeeDAO {
 
-  
+  private Properties prop = new Properties();
 
    public employeeDAO(){
         try {
