@@ -8,13 +8,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
 import java.util.Properties;
 
 import static com.common.JDBCTemplate.close;
 
 public class employeeDAO {
 
-    private Properties prop = new Properties();
+  
 
    public employeeDAO(){
         try {
@@ -58,6 +59,7 @@ public class employeeDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally{
+
             close(stmt);
             close(rset);
         }
@@ -65,6 +67,29 @@ public class employeeDAO {
 
         return empList;
     }
+      public void countEmp (Connection con ){
+
+        Statement stmt = null;
+        ResultSet rset = null;
+
+        String query = prop.getProperty("select");
+
+        try {
+            stmt = con.createStatement();
+            rset = stmt.executeQuery(query);
+            while (rset.next()){
+                System.out.println(rset.getString("부서명") +" , " + rset.getString("부서인원") );
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally{
+          close(stmt);
+          close(rset);
+          }
 
 
+    }
 }
+
+
