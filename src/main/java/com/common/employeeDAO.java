@@ -2,14 +2,12 @@ package com.common;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 import java.util.Properties;
+import java.util.Scanner;
 
 import static com.common.JDBCTemplate.close;
 
@@ -87,6 +85,43 @@ public class employeeDAO {
           close(stmt);
           close(rset);
           }
+
+    public int phonechange (Connection con){
+
+        PreparedStatement pstmt = null;
+
+        int result = 0;
+
+
+
+
+            String query = prop.getProperty("phonechange");
+            Scanner sc  = new Scanner(System.in);
+            System.out.print("수정할 사원의 이름을 입력해 주세요 : ");
+            String empName = sc.nextLine();
+            System.out.print("바꿀 번호를 입력해 주세요 : ");
+            String empPhone = sc.nextLine();
+
+        try {
+            pstmt=con.prepareStatement(query);
+            pstmt.setString(1,empPhone);
+            pstmt.setString(2,empName);
+
+            result=pstmt.executeUpdate();
+
+
+
+
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }finally {
+            close(pstmt);
+        }
+
+        return result;
+    }
 
 
     }
