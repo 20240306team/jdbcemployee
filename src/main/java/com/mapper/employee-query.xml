@@ -1,2 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone ="no" ?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <entry key="select">
+
+        select
+        b.dept_title as 부서명,
+        count(*) as 부서인원
+
+        from
+        employee a
+
+        join
+        department b on a.dept_code = b.dept_id
+        group by a.dept_code;
+
+    </entry>
+
+</properties>
