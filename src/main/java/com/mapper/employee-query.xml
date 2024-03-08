@@ -7,4 +7,13 @@
         from
             employee
     </entry>
+    <entry key="phonechange">
+        update employee
+        set
+        PHONE =?
+        where
+            EMP_NAME =?
+
+
+    </entry>
 </properties>

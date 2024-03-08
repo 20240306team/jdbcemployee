@@ -21,5 +21,13 @@ public class Application {
         for(employeeDTO allemp : emplist){
             System.out.println("allemp = " + allemp);
         }
+
+       int result = empRegist.phonechange(con);
+
+        if(result == 0){
+            System.out.println("입력실패");
+        }else{
+            System.out.println("입력성공");
+        }
     }
 }
