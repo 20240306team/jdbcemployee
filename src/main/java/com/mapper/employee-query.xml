@@ -28,5 +28,7 @@
         set
         PHONE =?
         where
-            EMP_NAME =?
+        EMP_NAME =?
+    </entry>
+
 </properties>

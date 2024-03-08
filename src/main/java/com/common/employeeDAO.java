@@ -86,7 +86,11 @@ public class employeeDAO {
           close(rset);
           }
 
-    public int phonechange (Connection con){
+
+
+
+    }
+    public int phonechange(Connection con){
 
         PreparedStatement pstmt = null;
 
@@ -95,12 +99,12 @@ public class employeeDAO {
 
 
 
-            String query = prop.getProperty("phonechange");
-            Scanner sc  = new Scanner(System.in);
-            System.out.print("수정할 사원의 이름을 입력해 주세요 : ");
-            String empName = sc.nextLine();
-            System.out.print("바꿀 번호를 입력해 주세요 : ");
-            String empPhone = sc.nextLine();
+        String query = prop.getProperty("phonechange");
+        Scanner sc  = new Scanner(System.in);
+        System.out.print("수정할 사원의 이름을 입력해 주세요 : ");
+        String empName = sc.nextLine();
+        System.out.print("바꿀 번호를 입력해 주세요 : ");
+        String empPhone = sc.nextLine();
 
         try {
             pstmt=con.prepareStatement(query);
@@ -121,9 +125,6 @@ public class employeeDAO {
         }
 
         return result;
-    }
-
-
     }
 }
 
