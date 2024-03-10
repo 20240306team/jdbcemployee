@@ -1,7 +1,9 @@
 package com.common;
 
+import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -163,6 +165,31 @@ public class employeeDAO {
         return result;
 
     }
+
+    public int getout(Connection con, String empName) {
+       String query = prop.getProperty("GETOUT");
+       int result = 0 ;
+       PreparedStatement pstmt = null;
+        try {
+            pstmt = con.prepareStatement(query);
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            System.out.println("정말로 삭제할건가요? : (yes/no)");
+            String answer = br.readLine();
+            if(answer.toLowerCase()=="yes"){
+            pstmt.setString(1,empName);
+            result = pstmt.executeUpdate();}
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } finally{
+            close(pstmt);
+        }
+        return result;
+    }
+
+
 }
 
 

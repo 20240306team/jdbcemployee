@@ -36,5 +36,9 @@
         values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)
 
     </entry>
+    <entry key="GETOUT">
+        delete from employee
+        where EMP_NAME = ?;
+    </entry>
 
 </properties>

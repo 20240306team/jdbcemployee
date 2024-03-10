@@ -24,9 +24,9 @@ public class Application {
 
     employeeDAO empRegist = new employeeDAO();
 
-    empRegist.countEmp(con);       
+    empRegist.countEmp(con);
 
-       
+
 
     List<employeeDTO> emplist =  empRegist.getEverything(con);
 
@@ -99,6 +99,17 @@ public class Application {
             System.out.println("실패...");
         }
         //con: 쿼리를 연결해주는 값
+        int result2 = empRegist.getout(con,newEmp.getEmpName());
+
+        if(result2 != 0){
+            System.out.println("성공적으로 사원을 내보냈습니다 ");
+        }else{
+            System.out.println("살아남았군요");
+        }
+
+
+
+
     }
 }
 
